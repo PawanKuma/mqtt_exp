@@ -5,7 +5,7 @@ import time
 import paho.mqtt.subscribe as subscribe
 
 
-st.title("Simple MQTT Server")
+st.title("MQTT Server by ResoluteAI Software")
 
 # Using object notation
 vinworthjasaupur = st.sidebar.checkbox("vinworthjasaupur", value=True)
