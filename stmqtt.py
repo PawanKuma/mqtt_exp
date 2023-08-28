@@ -8,12 +8,12 @@ import paho.mqtt.subscribe as subscribe
 st.title("Simple MQTT Server")
 
 # Using object notation
-vinworthjasaupur = st.sidebar.checkbox("vinworthjasaupur")
-upapltest = st.sidebar.checkbox("upapltest")
-vinworthtest = st.sidebar.checkbox("vinworthtest")
+vinworthjasaupur = st.sidebar.checkbox("vinworthjasaupur", value=True)
+upapltest = st.sidebar.checkbox("upapltest", value=True)
+vinworthtest = st.sidebar.checkbox("vinworthtest", value=True)
 
 schemes = [vinworthjasaupur, upapltest, vinworthtest]
-names = ["vinworthjasaupur", "upapltest", "vinworthtest"]
+names = {"vinworthjasaupur": vinworthjasaupur, "upapltest": upapltest, "vinworthtest": vinworthtest}
 schemeids = {"vinworthtest":"Bulandshahar - Alampur nagla", "vinworthjasaupur": "Jaunpur (Jasaupur)", "861190059947132":"Sant Ravidas Nagar - Jethupur", "861190059974243":"Ambedkar Nagar- Rukunpur kasimpur","861198066252826": "Amethi- sogara"}
 
 # Initialize chat history
