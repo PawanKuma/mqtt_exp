@@ -5,16 +5,17 @@ import time
 import paho.mqtt.subscribe as subscribe
 
 
-st.title("MQTT Server by ResoluteAI Software")
+st.title("Simple MQTT Server")
 
 # Using object notation
 vinworthjasaupur = st.sidebar.checkbox("vinworthjasaupur", value=True)
 upapltest = st.sidebar.checkbox("upapltest", value=True)
 vinworthtest = st.sidebar.checkbox("vinworthtest", value=True)
+vinworthalampurnagala = st.sidebar.checkbox("vinworthalampurnagala", value=True)
 
-schemes = [vinworthjasaupur, upapltest, vinworthtest]
-names = {"vinworthjasaupur": vinworthjasaupur, "upapltest": upapltest, "vinworthtest": vinworthtest}
-schemeids = {"vinworthtest":"Bulandshahar - Alampur nagla", "vinworthjasaupur": "Jaunpur (Jasaupur)", "861190059947132":"Sant Ravidas Nagar - Jethupur", "861190059974243":"Ambedkar Nagar- Rukunpur kasimpur","861198066252826": "Amethi- sogara"}
+schemes = [vinworthjasaupur, upapltest, vinworthtest, vinworthalampurnagala]
+names = {"vinworthjasaupur": vinworthjasaupur, "upapltest": upapltest, "vinworthtest": vinworthtest, "vinworthalampurnagala": vinworthalampurnagala}
+schemeids = {"vinworthtest":"Bulandshahar - Alampur nagla", "vinworthalampurnagala" : "Bulandshahar - Alampur nagla", "vinworthjasaupur": "Jaunpur (Jasaupur)", "861190059947132":"Sant Ravidas Nagar - Jethupur", "861190059974243":"Ambedkar Nagar- Rukunpur kasimpur","861198066252826": "Amethi- sogara", }
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -27,13 +28,14 @@ for message in st.session_state.messages:
 
 
 counter = 1
+
 while True:
     # print(list(names.keys()))
     msg = subscribe.simple(list(names.keys()), qos=0, msg_count=1, retained=True, hostname="20.235.93.174",port=1883, client_id="paho-sub", keepalive=1, will=None, auth={'username':"raiak", 'password':"RAIsw@2023"}, tls=None)
     topic = msg.topic
     if msg!=None and names[topic]:
         message = st.chat_message("assistant")
-        if topic == "vinworthjasaupur" or topic== "vinworthtest":
+        if topic == "vinworthjasaupur" or topic== "vinworthtest" or topic == "vinworthalampurnagala":
                 schemename = schemeids[topic]
         elif topic== "upapltest":
 #                 # print((json.loads(msg.payload))['trig'])
